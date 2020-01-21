@@ -15,6 +15,10 @@ wsServer.on("connection", client => {
   })
 
   client.send("Welcome!");
+
+  twitterStream.on("data", tweet => {
+    client.send(tweet.text);
+  })
 })
 
 server.listen(process.env.PORT);
